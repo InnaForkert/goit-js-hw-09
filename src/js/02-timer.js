@@ -1,5 +1,6 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import Notiflix from 'notiflix';
 
 let now = new Date();
 let format;
@@ -19,7 +20,7 @@ const options = {
   onClose(selectedDates) {
       difference = selectedDates[0] - now;
       if (selectedDates[0] < now) {
-          alert("Please choose a date in the future");
+          Notiflix.Notify.warning("Please choose a date in the future");
       } else {
           startTimer.removeAttribute('disabled');
       }
