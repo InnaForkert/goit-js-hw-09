@@ -6,9 +6,9 @@ const amount = document.querySelector('input[name=amount]');
 const form = document.querySelector('.form');
 let position = 1;
 let promiseInterval;
-let delayVal = Number(delay.value);
-let stepVal = Number(step.value);
-let amountVal = Number(amount.value);
+let delayVal;
+let stepVal;
+let amountVal;
 
 form.addEventListener('submit', createPromise);
 
