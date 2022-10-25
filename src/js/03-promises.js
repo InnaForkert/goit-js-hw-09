@@ -10,14 +10,18 @@ let promiseInterval;
 form.addEventListener('submit', createPromise);
 
 function resolvePromise() {
+  let delayVal = Number(delay.value);
+  let stepVal = Number(step.value);
+  let amountVal = Number(amount.value);
   const shouldResolve = Math.random() > 0.3;
-  console.log(position);
   if (shouldResolve) {
-    Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay.value}ms`);
+    Notiflix.Notify.success(`Fulfilled promise ${position} in ${delayVal}ms`);
   } else {
-    Notiflix.Notify.failure(`Rejected promise ${position} in ${delay.value}ms`);
+    Notiflix.Notify.failure(`Rejected promise ${position} in ${delayVal}ms`);
   }
-  if (position === amount.value) {
+  position += 1;
+  delayVal += stepVal;
+  if (position == amount.value) {
     clearInterval(promiseInterval);
     position = 1;
   }
