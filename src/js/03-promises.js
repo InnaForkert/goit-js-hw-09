@@ -35,6 +35,7 @@ function createPromise(event) {
   let promise = new Promise((resolve, reject) => {
     setTimeout(() => {
     promiseInterval = setInterval(resolvePromise, stepVal);
+    resolvePromise();
     }, delayVal);
   })
     return promise;
