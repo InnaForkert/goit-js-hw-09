@@ -5,14 +5,12 @@ form.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
-
   let {
     elements: { delay, step, amount },
   } = event.currentTarget;
   amount = Number(amount.value);
   delay = Number(delay.value);
   step = Number(step.value);
-
   for (let i = 0; i < amount; i += 1) {
     createPromise({ i, delay })
       .then(({ i, delay }) => {
