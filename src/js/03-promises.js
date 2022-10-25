@@ -6,12 +6,10 @@ const amount = document.querySelector('input[name=amount]');
 const form = document.querySelector('.form');
 let position = 1;
 let promiseInterval;
-let whaat;
-// console.log(delay.value);
 
-form.addEventListener('submit', handleSubmit);
+form.addEventListener('submit', createPromise);
 
-function createPromise(position, delay) {
+function resolvePromise() {
   const shouldResolve = Math.random() > 0.3;
   console.log(position);
   if (shouldResolve) {
@@ -23,16 +21,31 @@ function createPromise(position, delay) {
     clearInterval(promiseInterval);
     position = 1;
   }
-  increasePosition();
 }
 
-function increasePosition() {
-  whaat = setInterval(() => {position += 1}, 0);
-}
- 
-function handleSubmit(event) {
+function createPromise(event) {
   event.preventDefault();
-  setTimeout(() => {
-    promiseInterval = setInterval(createPromise, 1200, position, delay);
-  }, delay.value)
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+    promiseInterval = setInterval(resolvePromise, step.value);
+    }, delay.value);
+  })
+    return promise;
+
 }
+
+// createPromise(position, delay).then(increasePosition);
+  
+// function increasePosition() {
+//   position += 1;
+//   console.log(position);
+// };
+ 
+// function handleSubmit(event) {
+//   event.preventDefault();
+//   // setTimeout(() => {
+//   //   promiseInterval = setInterval(createPromise, step.value, position, delay);
+//   // }, delay.value)
+  
+
+// }
